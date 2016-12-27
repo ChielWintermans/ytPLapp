@@ -4,10 +4,6 @@ var pageToken;
 //var clipCount=ko.observable('');
 var clipsDone=0; 
 var ytPlaylistID='PLpmQJ2D10iJx_GEYNZwAON38cluj0dNj4';
-// function to store playlist data
-var listInfo=function(data){
-	this.listLength=data;
-};
 
 // function to create clip objects
 var clip=function(data){
