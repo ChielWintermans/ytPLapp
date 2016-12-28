@@ -1,13 +1,13 @@
 // global variables
+var ytPlaylistID;
 var ytResults=[];
 var pageToken;
 var clipsDone=0; 
-var ytPlaylistID='PLpmQJ2D10iJx_GEYNZwAON38cluj0dNj4';
 
 // function to create clip objects
 var clip=function(data){
 	this.clipTitle=ko.observable(data.title);
-};
+}
 
 function Model(){
 	var self=this;
@@ -48,7 +48,7 @@ function ViewModel(){
 		   		fillList();
 		   		pageToken=data.nextPageToken;
 		   		clipsDone=clipsDone+50;
-	   		  	if(clipsDone<model.clipCount){
+	   		  	if(clipsDone<model.clipCount()){
   					ytConnector.fetchDataFromYt();
 				};
 		    }).fail(function(jqxhr, textStatus, error) {
@@ -75,7 +75,6 @@ function ViewModel(){
 		   	fetchDataFromYt: fetchDataFromYt,
 	  	};
   	})();
-	ytConnector.fetchDataFromYt();
 
 	thisPlaylist=function(){
 		model.clipList().length=0;
@@ -87,3 +86,4 @@ function ViewModel(){
 ko.applyBindings(new ViewModel());
 
 // PLpmQJ2D10iJzd1SPy7FlaaBFt07fhLSL3
+// PLpmQJ2D10iJx_GEYNZwAON38cluj0dNj4
