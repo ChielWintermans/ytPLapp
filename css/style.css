@@ -40,6 +40,13 @@ main {
 .small {
     display: none;
 }
+.form-holder {
+    width: 100%;
+}
+.info-holder {
+    width: 100%;
+    padding-top: 10px;
+}
 
 /* styles for mobile portrait viewport */
 @media only screen and (max-width: 449px) {

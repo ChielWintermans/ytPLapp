@@ -1,7 +1,6 @@
 // global variables
 var ytResults=[];
 var pageToken;
-//var clipCount=ko.observable('');
 var clipsDone=0; 
 var ytPlaylistID='PLpmQJ2D10iJx_GEYNZwAON38cluj0dNj4';
 
@@ -41,8 +40,7 @@ function ViewModel(){
 		  		url: requestPayload.url,
 		   		type: requestPayload.method,
 		   	}).done(function(data){
-		   		//console.log(data);
-		   		model.clipCount=data.pageInfo.totalResults;
+		   		model.clipCount(data.pageInfo.totalResults);
 		   		ytResults.length=0;
 		   		for(i=0;i<data.items.length;i++){
 		   			ytResults=ytResults.concat(data.items[i].snippet.title);
@@ -80,8 +78,10 @@ function ViewModel(){
 	ytConnector.fetchDataFromYt();
 
 	thisPlaylist=function(){
+		model.clipList().length=0;
+		pageToken=null;
 		ytPlaylistID=self.loadPlaylist();
-		console.log('playlist ID: '+ytPlaylistID);
+		ytConnector.fetchDataFromYt();
 	};
 }
 ko.applyBindings(new ViewModel());
